@@ -31,6 +31,7 @@
 
 - Ensure that the script has the necessary permissions to execute during the commit process.
 - The script uses UTF-8 encoding for reading and writing files.
+- The script will check up to the first 32 lines of the file; any front matter beyond this range will be considered invalid.
 - If there are multiple lastUpdated fields in the FrontMatter, only the last one will be updated.
 - The newly added lastUpdated field will be inserted at the last line of the FrontMatter.
 - If there is no newline character at the end of the file, a newline character will be added as the end of the file.
