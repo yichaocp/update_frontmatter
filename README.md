@@ -1,18 +1,18 @@
 ## DESCRIPTION
 
-- 该脚本设计为在 TortoiseSVN 中作为 pre-commit hook 使用，以在提交更改之前自动更新 Markdown 文件的前置内容。
+- 该脚本设计为在 TortoiseSVN 中作为 pre-commit hook 使用，以在提交更改之前自动更新 Markdown 文件的 front matter。
 
-- 它将处理当前目录中根据 SVN 状态已添加或修改的所有 Markdown (.md) 文件。它会在每个文件的前置内容中更新或添加一个 "lastUpdated" 字段，格式为 ISO8601 格式 "yyyy-MM-ddTHH:mm:ssZ" 的当前日期和时间。
+- 它将处理当前目录中根据 SVN 状态已添加或修改的所有 Markdown (.md) 文件。它会在每个文件的 front matter 中更新或添加一个 "lastUpdated" 字段，格式为 ISO8601 格式 "yyyy-MM-ddTHH:mm:ssZ" 的当前日期和时间。
 
-- 该脚本假设前置内容包含在 "---" 行内。
-  - 如果文件没有前置内容，它会在文件开头添加前置内容。
-  - 如果文件有前置内容但没有 "lastUpdated" 字段，它会添加该字段。
+- 该脚本假设 front matter 包含在 "---" 行内。
+  - 如果文件没有 front matter，它会在文件开头添加 front matter。
+  - 如果文件有 front matter 但没有 "lastUpdated" 字段，它会添加该字段。
   - 如果文件已经有 "lastUpdated" 字段，它会用当前日期和时间更新该字段。
 
 ### 示例
 
 - .\update.ps1
-- 这将使用当前日期和时间更新当前目录中所有已添加或修改的 Markdown 文件的前置内容。
+- 这将使用当前日期和时间更新当前目录中所有已添加或修改的 Markdown 文件的 front matter。
 
 ### 示例
 
@@ -32,8 +32,8 @@
 - 确保脚本在提交过程中具有执行的必要权限。
 - 脚本使用 UTF-8 编码读取和写入文件。
 - 脚本最多会检测文件前 32 行，超过此范围的 front matter 会认为无效。
-- 如果前置内容中有多个 lastUpdated 字段，只有最后一个会被更新。
-- 新添加的 lastUpdated 字段将插入到前置内容的最后一行。
+- 如果 front matter 中有多个 lastUpdated 字段，只有最后一个会被更新。
+- 新添加的 lastUpdated 字段将插入到 front matter 的最后一行。
 - 如果文件末尾没有换行符，将在文件末尾添加一个换行符。
 - 脚本使用 "UTC" 时区格式的当前日期和时间。
 - 脚本设计为与 TortoiseSVN 一起使用，但可以适应其他版本控制系统。
